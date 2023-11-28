@@ -1,0 +1,11 @@
+# compliation
+.idea/
+__pycache__/
+*/__pycache__/
+*ipynb_checkpoint*
+
+# other
+.DS_Store
+
+#train object
+*train*.p
