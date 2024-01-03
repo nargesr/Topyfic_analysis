@@ -17,7 +17,9 @@ Our study highlights the potential of topic modeling using regulatory genes for 
 - ENCODE data: [cart](https://www.encodeproject.org/carts/5fc81d98-5a0e-4426-a9c8-10fa536430ba/)
 - MODEL-AD data: comming soon
 
-## Pre processing
+![input data](Figures/data.png)
+
+### Pre processing
 It includes four main steps but you can download the **preprocessed gene count data** from ENOCDE portal [here]().
 
 1. Get unfiltered gene count h5ad for each experiment
@@ -26,16 +28,25 @@ It includes four main steps but you can download the **preprocessed gene count d
 4. Annotate nuclei
 5. normalize counts using [depth normalization](https://www.biorxiv.org/content/10.1101/2022.05.06.490859v1)
 
+![ENCODE](Figures/barplot_breakdown_ENCODE.png)
+![Model-AD](Figures/barplot_breakdown_ModelAD.png)
+
+**For depth-in analysis in please look at this [github repository](https://github.com/erebboah/enc4_mouse_paper).**
+
 
 ### Regulatory genes
+We hypothesize that we can define meaningful topics for cell identity using only regulatory genes, which account for 12% of protein coding genes.
 
+![regulatory genes](Figures/reg_gene.png)
+
+**For more information about how we determine regulatory genes, please look at this [github repository](https://github.com/erebboah/enc4_mouse_paper).**
 
 ## Training TopModel
 To find the best number of topics (k), we start to train our model using several Ks starting from K=5 until 50.
 We start our training by running on WT and 5xFAD mice separately.
 
 For each K:
-- Training for 100 random seeds: Run [run.sh](Training/scripts/run.sh) to get train object per random seed
+- Training model with 100 different random seeds using [topyfic.py](Training/scripts/topyfic.py) to get train object per random seed
 - Aggregate all training objects using [make_train.py](Training/scripts/make_train.py)
 - Make TopModel using [make_topmodel.py](Training/scripts/make_topmodel.py)
 
@@ -56,3 +67,9 @@ At the end you have one train object, one Topmodel object for each K.
 
 
 ## Analysis TopModel
+Here you can find the downstream analysis related to each model
+
+- single nucleus RNA-seq data using all genes: notebook related to this dataset and figure2 is [here](Analysis/sn_all_genes/analysing.ipynb)
+- single nucleus RNA-seq data using regulatory genes: notebook related to this dataset and figure3 is [here](Analysis/sn_reg_genes/analysing.ipynb)
+- single cell microglia RNA-seq data: notebook related to this dataset and figure4 is [here](Analysis/sc/analysing.ipynb)
+
