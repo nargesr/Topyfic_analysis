@@ -2,20 +2,30 @@
 
 This repo contains all the analysis related to [this paper]().
 
+I would also encourage you to take a look at the [Topyfic package](https://github.com/mortazavilab/Topyfic).
+
 ## Overview
-The gene expression profile of cell types results from complex interactions among biological processes within those cells. 
-Identifying the distinct cellular programs active in a cell is an open challenge for the analysis of single-cell RNA-seq data. 
-Latent Dirichlet Allocation (LDA) is commonly used to identify recurring patterns in count data, commonly referred to as topics. 
-Grade of membership (GoM) for each LDA topic can then be assigned back to samples, such as each cell. 
-However, LDA's interpretability is hindered by hyperparameter selection of the number of topics as well as the variability in topic definitions due to random initialization. 
-We developed Topyfic, a Reproducible LDA (rLDA) package, to accurately infer the identity and activity of cellular programs in single-cell data, providing insights into the relative contributions of each program in individual cells. 
-We apply Topyfic to brain single-cell and single-nucleus datasets from mouse models of AD to identify distinct cell types and states in cell types such as microglia. 
-We show that regulatory genes such as TFs, microRNA host genes, and chromatin regulatory genes alone capture much of these topics. 
-Our study highlights the potential of topic modeling using regulatory genes for elucidating biological structure in RNA-seq gene expression data.
+
+The gene expression profiles of distinct cell types reflect com- plex genomic interactions among multiple simultaneous 
+biological processes within each cell that can be altered by disease progression as well as genetic background. 
+The identification of these active cellular programs is an open challenge in the analysis of single-cell RNA-seq data. 
+Latent Dirichlet Allocation (LDA) is a generative method used to identify recurring patterns in counts data, 
+commonly referred to as topics that can be used to interpret the state of each cell. However, LDA’s interpretability is 
+hindered by several key factors including the hyperparameter selection of the number of topics as well as the 
+variability in topic definitions due to random initialization. We developed Topyfic, a Reproducible LDA (rLDA) package, 
+to accurately infer the identity and activity of cellular programs in single-cell data, providing insights into the 
+relative contributions of each program in individual cells. We apply Topyfic to brain single-cell and single-nucleus 
+datasets of two 5xFAD mouse models of Alzheimer’s disease crossed with C57BL6/J or CAST/EiJ mice to identify distinct 
+cell types and states in different cell types such as microglia. We find that 8-month 5xFAD/Cast F1 males show higher 
+level of microglial activation than matching 5xFAD/BL6 F1 males, whereas female mice show similar levels of microglial 
+activation. We show that regulatory genes such as TFs, microRNA host genes, and chromatin regulatory genes alone 
+capture cell types and cell states. Our study highlights how topic modeling with a limited vocabulary of regulatory 
+genes can identify gene expression programs in single-cell data in order to quantify similar and divergent cell states 
+in distinct genotypes.
 
 ## Data
 - ENCODE data: [cart](https://www.encodeproject.org/carts/5fc81d98-5a0e-4426-a9c8-10fa536430ba/)
-- MODEL-AD data: comming soon
+- MODEL-AD data: [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE255965)
 
 ![input data](Figures/data.png)
 
@@ -72,4 +82,9 @@ Here you can find the downstream analysis related to each model
 - single nucleus RNA-seq data using all genes: notebook related to this dataset and figure2 is [here](Analysis/sn_all_genes/analysing.ipynb)
 - single nucleus RNA-seq data using regulatory genes: notebook related to this dataset and figure3 is [here](Analysis/sn_reg_genes/analysing.ipynb)
 - single cell microglia RNA-seq data: notebook related to this dataset and figure4 is [here](Analysis/sc/analysing.ipynb)
+
+## Hosting results
+
+- Single-nucleus RNA-seq results: [ENCODE portal](https://www.encodeproject.org/)
+- Single-cell (microglia) RNA-seq results: [Zenodo](https://zenodo.org/records/10724706?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjhlMTA4ZWFiLWQ1MjgtNGQ4Yy1iYjE5LWU5ZWY0MzM4MDVmNyIsImRhdGEiOnt9LCJyYW5kb20iOiIwZjdhNzg4ZDExMzYxMTM5MzQwODk4NGYwOWRkYzRlOSJ9.2qzF6Y7gO_RUEtQQaW7isi02FcaoxdjT664NU-pMeJJdc2ViFhRTVBi485NlHYRKXGzmrSCdZO1n8LzL0RRspg)
 
